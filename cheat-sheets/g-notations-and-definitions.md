@@ -1,6 +1,4 @@
-#Algorithms
-
-####Definitions & Notations
+# Notations & Definitions
 
 $X$: a matrix containing all feature values (excluding labels is available) of all instances. Row = instance. It is noted as follows: 
 $$ X = \begin{pmatrix}
@@ -24,16 +22,3 @@ $y = \begin{pmatrix} y^1 \\ y^2 \\ ... \\ y^n   \end{pmatrix}$: the vector of la
 
 ---
 $h$: the system's prediction function, or *hypothesis*, or *theory*. It outputs a predicted value $\hat{y}^{(i)} = h(x^{(i)})$
-
-
-##Regression
-
-###Performance measures
-
-**Root mean square error**: euclidian distance.
-$$RMSE(X, h) = \sqrt{\dfrac{1}{m} \sum_{i=1}^{m}   \big(h(x^{(i)}) - y^{(i)} \big)^2 }$$ 
-
-**Mean absolute error**: Manhattan distance.
-$$MAE(X, h) =  \dfrac{1}{m} \sum_{i=1}^{m} \mid h(x^{(i)})- y^{(i)} \mid $$
-
-Any norm $k$, noted $\mid\mid . \mid\mid_k$, can be used. The higher the norm, the more it focuses on large values and neglects small ones. Higher order norms are more sensisble to outliers.   **Warnings**: May be source of algorithmic biais. choose carefully.   

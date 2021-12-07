@@ -100,11 +100,25 @@ Basic steps when dealing with a ML problem (notes correspond mostly to a regress
   * Feature scaling: depends on data. Common ways to perform scaling: min-max scaling, standardization
   * Transformation pipelines: encapsulate a sequence of transformers and a final estimator. When called (fit() function), it calls fit_transform() sequentially on all transformers passing the output of each call as the input of the next call until reaching the final estimator, for which it call fit()      
 * Model selection and training
-* Fine tuning 
-* Presentation 
+  * Train different models (i.e different algorithms) on training data and compare performances using a distance
+  * Use cross-validation when possible.  
+* Fine tuning
+  * Tweak hyper-parameters to improve performances
+  * Can be time consuming. Use automattion techniques Grid Search / Randomized search 
+    * With grid search: if the best parameter is the highest/lowest one, one should run a grid search with higher/lower values. 
+    * Randomized search for hyperparameters is more efficient.
+    * The two can also be time consuming.  
+  * Use ensemble methods  
+* Evaluation 
+  * On the test set (that wasn't touched) 
+  * Do not forget to transform data using same process as for training. 
+* Presentation
+  * Documenting every thing (models, data transformations, cleaning ...) is useful for presentation. 
+  * Aim: describe data analysis process, why models were chosen, how hyperparameters were set, remarks on data, expected performances ... 
 * Monitoring and maintaining
-
-
+  * Monitoring performances of model in production can be tough: what metrics should one use ? what performance threshold should be used ? Dependes on the context. 
+  * Models need to be re-trained 
+  * (cf. concept drift: litterature is abondant)
 
 > #### **Scikit-learn design**
 > The main design principles of Scikit-learn: 
@@ -120,3 +134,25 @@ Basic steps when dealing with a ML problem (notes correspond mostly to a regress
 > *Lars Buitinck et al. API design for machine learning software: experiences from the scikit-learn project. arXiv preprint arXiv:1309.0238 (2013)* https://arxiv.org/pdf/1309.0238.pdf
 
 
+## Chapitre 3: Classification
+
+### Validation techniques
+* Accuracy not always the best way to evaluate a classifier. 
+* It's better to use a Confusion matrix 
+* Precision, recall and F1-score. (When training a model, keep in mind objectives when setting targets for precision and recall: depends on the problem.)
+* ROC curve 
+(see performance measures cheat sheet)
+### Binary classification
+Binary classification: two classes, each sample has one class
+### Multiclass classification
+Multiclass classification: multiple classes, each sample has one class
+Two strategies:
+* One versus Rest (OvR): Train a classifier to recognize a class over all others for each class. For instance, if 10 classes, 10 classifiers are needed. For prediction, running a sample over the n classifiers and selecting the one providing the higherst score. This strategy is often preferred.   
+* One versus One (OvO): Train a classifier to recognize a class over another class: $\frac{N*(N-1)}{2}$ classifers are needed. To make a prediction, run the sample over all classifiers and select the one winning the most duels. This strategy is prefered if the used algorithm scales poorly: better training numerous classifiers on small training sets than training few over a large training set. 
+
+### Multilabel classification
+Multilabel classification: multiples classes, a sample may have multiple classes
+
+Example: Assume a multilabel classifier trained to recognize oranges, apples and, bananas. Samples used to train this classifier should have three lables (o, a, b) one for each class. predictions should take the form of (1, 0 , 1) meaning : image contains an orange, no apples and a banana. 
+
+### Mutlioutput classification

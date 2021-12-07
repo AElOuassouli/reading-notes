@@ -2,7 +2,7 @@
 
 Cheat sheat on feature scaling. 
 
-#### Useful notations definitions
+#### Notations
 
 $X$: a dataset (a matrix of features x instances)
 $N$: number of instances in $X$ 
