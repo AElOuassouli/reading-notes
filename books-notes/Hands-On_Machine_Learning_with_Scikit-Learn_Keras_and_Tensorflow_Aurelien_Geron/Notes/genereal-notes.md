@@ -134,7 +134,7 @@ Basic steps when dealing with a ML problem (notes correspond mostly to a regress
 > *Lars Buitinck et al. API design for machine learning software: experiences from the scikit-learn project. arXiv preprint arXiv:1309.0238 (2013)* https://arxiv.org/pdf/1309.0238.pdf
 
 
-## Chapitre 3: Classification
+## Chapter 3: Classification
 
 ### Validation techniques
 * Accuracy not always the best way to evaluate a classifier. 
@@ -156,3 +156,21 @@ Multilabel classification: multiples classes, a sample may have multiple classes
 Example: Assume a multilabel classifier trained to recognize oranges, apples and, bananas. Samples used to train this classifier should have three lables (o, a, b) one for each class. predictions should take the form of (1, 0 , 1) meaning : image contains an orange, no apples and a banana. 
 
 ### Mutlioutput classification
+A generalization of multiclass classification: each label can be multiclass (having more than two possile values). 
+
+## Chapter 4: Training models 
+
+see regression/algorithms notebook. 
+
+> 
+> **The bais/variance trade-off**
+> Generalization error (i.e. when a model do not provide satisfactory prediction for novel data) can be expressed as the sum of three errors 
+> * **Biais**: Biais erros is due to wrong assumptions. This can include assuming data is linear while it is quadratic. A high biais model is most likely to underfit the training data
+> * **Variance**: Variance errors is due to the exessive sensibility to small variations in the training data (i.e. the model provides very different predictions for two attributes vector with slightly different values). For instance, a polynomial regression model with too many degrees of freedom is likely to have high variance. High-variance models are likely to overfit the training data
+> * **Irreductible error**: It is due to the inherent noisiness of data. It can be reduced by cleaning data (e.g. fixing sensors, using more precise sensors, detecting and removing outliers)
+> 
+> Models complexity typically increase model variance and reduce its biais. The inverse is also true. A good ML model is a model that balances between variance and biais: acheiving a satisfactory variance/biais trade-off.
+> 
+
+
+
