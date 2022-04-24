@@ -137,7 +137,7 @@ Basic steps when dealing with a ML problem (notes correspond mostly to a regress
 >
 > _Lars Buitinck et al. API design for machine learning software: experiences from the scikit-learn project. arXiv preprint arXiv:1309.0238 (2013)_ https://arxiv.org/pdf/1309.0238.pdf
 
-## Chapitre 3: Classification
+## Chapter 3: Classification
 
 ### Validation techniques
 
@@ -225,3 +225,17 @@ The difficulty using this approach is to determine a condition to decide if the 
 ### Logistic Regression
 
 Is actually a binary classifier.
+A generalization of multiclass classification: each label can be multiclass (having more than two possile values).
+
+## Chapter 4: Training models
+
+see regression/algorithms notebook.
+
+> **The bais/variance trade-off**
+> Generalization error (i.e. when a model do not provide satisfactory prediction for novel data) can be expressed as the sum of three errors
+>
+> - **Biais**: Biais erros is due to wrong assumptions. This can include assuming data is linear while it is quadratic. A high biais model is most likely to underfit the training data
+> - **Variance**: Variance errors is due to the exessive sensibility to small variations in the training data (i.e. the model provides very different predictions for two attributes vector with slightly different values). For instance, a polynomial regression model with too many degrees of freedom is likely to have high variance. High-variance models are likely to overfit the training data
+> - **Irreductible error**: It is due to the inherent noisiness of data. It can be reduced by cleaning data (e.g. fixing sensors, using more precise sensors, detecting and removing outliers)
+>
+> Models complexity typically increase model variance and reduce its biais. The inverse is also true. A good ML model is a model that balances between variance and biais: acheiving a satisfactory variance/biais trade-off.
